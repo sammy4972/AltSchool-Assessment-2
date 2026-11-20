@@ -1,660 +1,610 @@
-
-/* =====================================
-   1. GLOBAL STYLES
-===================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-@import url(Gilroy-Medium.ttf);
-:root {
-    --blue: #0865ed;
-    --dark: #17364d;
-    --navy: #19364d;
-    --light: #f5f9ff;
-    --text: #222;
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
 }
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+ 
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+
+
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('Gilroy-Medium.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 html {
     scroll-behavior: smooth;
-    font-family: ;
 }
-
 
 body {
-  font-family: 'Giiroy-medium'
+    font-family: 'Gilroy';
+    background: #ffffff;
+    color: #141414;
+    width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+    
 }
+
+body{
+    max-width: 1440px;
+    background: url(aurora.svg);
+    background-repeat: no-repeat;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+}
+
+
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
+button,
+input,
+select {
+    font: inherit;
+}
+
 button {
-    font-family: ;
     cursor: pointer;
-    font-family: inherit;
 }
 
-.container {
-    width: 88%;
-    max-width: 1200px;
-    margin: auto;
+
+.container-navbar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+max-width: 1150px;
+min-height: 44px;
+margin-block-start: 10px;
+margin: auto;
+
 }
 
-section {
-    padding: 85px 0;
+.nav-links {
+  display: flex;
+  align-items: center;
+  width: 504px;
+  height: 24px;
+  gap: 40px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #141414;
 }
 
-.section-heading {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 15px;
+.nav-links a:hover {
+  color: var(--blue);
 }
 
-.section-heading span {
-    color: var(--blue);
+.logo img {
+  width: 155px;
+  height: auto;
+  margin-left: 0;
+
 }
 
-.section-description {
-    color: #777;
-    font-size: 13px;
-    line-height: 1.8;
+.nav-actions {
+  width: 211px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
-/* =====================================
-   2. BUTTONS
-===================================== */
+span{
+    color: #0065FE;
+}
 
 .btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 30px;
+    width: 142px;
+    height: 44px;
+    padding: 15px 24px;
+    border-radius: 100px;
     border: none;
-    background: var(--blue);
+    background-color: #0065FE;
     color: white;
     font-size: 16px;
     line-height: 12px;
-    font-weight: 600;
-    transition: .3s;
+    font-weight: 400;
+    
 }
+
 
 .btn:hover {
     background: #004bbd;
     transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: white;
-    border: 1px solid var(--blue);
-    color: var(--blue);
-}
-
-.btn-outline:hover {
-    background: var(--blue);
-    color: white;
-}
-
-/* =====================================
-   3. NAVIGATION
-===================================== */
-
-header {
-    width: 100%;
-    background: url(aurora.svg);
-    background-repeat:no-repeat;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 12px rgba(0,0,0,.04);
-}
-
-.navbar {
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    color: var(--blue);
-    font-size: 23px;
-    font-weight: 800;
-}
-
-.logo span {
-    color: var(--dark);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 100%;
-    color: #141414;
-}
-
-.nav-links a:hover {
-    color: var(--blue);
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    line-height: 100%;
-    gap: 24px;
-    color: #0065FE;
-}
-
-.menu-toggle {
-    display: none;
-    border: none;
-    background: none;
-    font-size: 26px;
-}
-
-/* =====================================
-   4. HERO SECTION
-===================================== */
-
-.hero {
-    background-image: url(aurora.svg);
-    background-repeat: no-repeat;
-    min-height: 620px;
-    padding: 110px 0 70px;
-    text-align: center;
-
-
-}
-.brush-stroke{
- margin-top: -40px;
- 
-}
-
-.hero h1 {
-    max-width: 1446px;
-    margin: 0 auto 20px;
-    font-size: clamp(30px, 4vw, 48px);
-    line-height: 96px;
-    font-weight: 700;
-}
-
-.hero h1 span {
-    color: var(--blue);
-}
-
-.hero p {
-    font-family: sans-serif;
-    padding-top: 16px;
-    max-width: 781px;
-    margin: 0 auto 30px;
-    font-size: 18px;
-    line-height: 28px;
-    color: #141414;
-}
-
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    align-items: center;
-    margin-bottom: 45px;
-}
-.hero h6{
-
-color: #E2E9F0;
-}
-
-.learn-more {
-    color: var(--blue);
-    font-size: 16px;
-    line-height: 100%;
-    font-weight: 500;
-}
-
-    
-
-
-.link-illustration {
-    max-width: 650px;
-    margin: auto;
-    padding: 30px;
-    border: 1px solid #d6e2f0;
-    border-radius: 18px;
-    background: linear-gradient(120deg, #eef4fa, #fff);
-    box-shadow: 0 15px 40px rgba(20,60,100,.08);
-}
-
-.chain {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-size: 35px;
-    color: #68798a;
-}
-
-.chain .arrow {
-    color: var(--blue);
-    font-size: 30px;
-}
-
-.link-illustration p {
-    font-size: 11px;
-    margin: 20px auto 0;
-}
-
-/* =====================================
-   5. STATISTICS SECTION
-===================================== */
-
-.stats {
-    display: flex;
-    grid-template-columns: 1.5fr repeat(4, 1fr);
-    align-items: center;
-    gap: 72px;
-
-}
-
-.stats-heading h2 {
-    font-size: 40px;
-    padding-right: 120px;
-    line-height: 48px;
-     white-space: nowrap;
-    letter-spacing: 0%;
-
-}
-strong{
-    color: #141414;
-}
-
-.stats-heading span {
-    color: var(--blue);
-}
-
-.stat h2 {
-    font-size: 32px;
-    padding-bottom: 68px;
-    line-height: 40px;
-    letter-spacing: 0%;
-    margin-bottom: 5px;
-}
-
-.stat p {
-    font-size: 16px;
-    line-height: 24px;
-    color: #141414;
-}
-
-/* =====================================
-   6. FEATURES SECTION
-===================================== */
-
-
-
-
-
-.features {
-    width: 90%;
-    margin: 25px auto;
-    display: grid;
-    grid-template-columns: 41% 59%;
-    align-items: start;
-    gap: 0;
-}
-
-/* Introduction */
-.feature-intro {
-    margin-right: 96px;
-    padding-left: 170px;
-}
-
-.section-heading {
-    font-size: 40px;
-    line-height: 32px;
-    font-weight: 700;
-    color: #141414;
-    margin-bottom: 10px;
-margin-inline-start: -32px;
-    
-}
-
-.section-headings {
-    font-size: 40px;
-    line-height: 48px;
-    font-weight: 700;
-    color: #141414;
-    margin-bottom: 10px;
-margin-inline-start: -32px;
-
-
-}
-
-.section-headings span {
-    color: #1768e8;
-}
-
-
-.section-descriptions {
-    font-size: 16px;
-    line-height: 28px;
-    max-width: 370px;
-    font-weight: 400;
-    margin-inline-start: -28px;
-    padding-block-start: 16px;
-    
 
     }
 
+    /* Hero Section */
 
-    .section-description{
+    .hero{
+        max-width: 948px;
+        min-height: 389px;
+        margin-left: 246px;
+        margin-block-start: 106px;
+    }
+
+
+
+    .contain h1 {
+        width: 948px;
+        max-height: 200px;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 96px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #141414;
+    
+    }
+
+    .contain img{
+    width: 173.63px;
+    height: auto;
+    margin: -5px auto 0;
+    }
+
+    .container p{
+        margin-block-start: 8px;
+        margin-left: 83.5px;
+        text-align: center;
+        width: 781px;
+        height: 105px;
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        letter-spacing: 0%;
+        color: #141414;
+    
+        
+    }
+
+    .hero-buttons{
+        width: 282px;
+        height: 44px;
+        gap: 56px;
+        margin-left: 333px;
+        margin-block-start: 27px;
+    }
+    
+    .btn{
+        padding: 12px 24px;
+        width: 142px;
+    }
+
+    .img{
+        margin-block-start: 56px;
+        width: 833px;
+        height: 336px;
+        margin-left: 123px;
+        
+    }
+    .img::before{
+        
+    }
+
+     /* Features Section */
+
+    .features {
+    width: 1202px;
+    height: 504px;
+    display: grid;
+    margin-left: 120px;
+    margin-block-start: 128px;
+    grid-template-columns: 398px 708px;
+    }
+
+    
+
+    .feature-grid {
+     width: 708px;
+     height: 504px;
+    display: grid;
+    grid-template-columns: 340px 340px;
+    grid-template-rows: 220px;
+    row-gap: 64px;
+    margin-left: 96px;
+    column-gap: 28px;
+}
+    .feature-intro{
+        height: 256px;
+    }
+    .feature-intro h2{
+     margin-block-start: 16px;
+     margin-left: 16px;
+     font-size: 40px;
+     line-height: 32px;
+     color: #141414;
+     letter-spacing: 0%;
+     width: 0.09999990463256836;
+    height: 48;
+    angle: 0 deg;
+    opacity: 1;
+     border-width: 5px;
+
+    }
+
+    .feature-intro p{
+        margin-block-start: 16px;
+        margin-left: 28.1px;
         font-size: 16px;
-        line-height: 24px;
-        font-family: sans-serif;
+        line-height: 28px;
+        font-weight: 400;
         color: #141414;
     }
-/* Feature grid */
-.feature-grid {
-    margin-inline-start: -60px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1px;
-    row-gap: 50px;
-}
-
-.feature-card {
-    padding: 0;
-}
-
-.feature-icon {
-    width: 43px;
-    height: 43px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #e5efff;
-    margin-bottom: 20px;
-}
-
-.feature-icon img {
-    width: 19px;
-    height: 19px;
-}
-
-.feature-card h3 {
-    max-width: 340px;
+  .feature-card h3{
+    margin-block-start: 30px;
     font-size: 32px;
+    line-height: 48px;
     color: #141414;
-    line-height: 28px;
-    font-weight: 700;
-    margin-bottom: 16px;
-}
-
-.feature-card {
-    font-size: 16px;
-    line-height: 24px;
-    color:#141414;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .features {
-        grid-template-columns: 1fr;
-        gap: 35px;
+  }
+    .feature-card p{
+        margin-block-start: 16px;
+        font-size: 16px;
+        line-height: 24px;
     }
 
-    .feature-intro {
-        padding-right: 0;
-    }
 
-    .section-heading {
-        white-space: normal;
+    /* Pricing Section*/
+    .container-1{
+        margin-block-start: 172px;
     }
 
     
-}
 
-@media (max-width: 480px) {
-    .feature-grid {
-        grid-template-columns: 1fr;
-        row-gap: 30px;
+    .section-headings {
+        width: 576.1px;
+        height: 108px;
+        margin-left: 332px;
+
+    }
+    .section-headings h2{
+      font-size: 40px;
+      line-height: 48px;
     }
 
-    .feature-card h3 {
-        font-size: 19px;
+    .section-headings p{
+        font-size: 16px;
+        line-height: 24px;
+        color: #141414;
+        margin-block-start: 8px;
     }
-}
 
+    .pricing-cards{
+        width: 1088px;
+        height: 627px;
+        margin-block-start: 68px;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        margin-left: 176px;
+    }
 
-/* =====================================
-   7. PRICING SECTION
-===================================== */
+    .price-card{
+        width: 379px;
+        height: 455px;
+        text-align: left;
+        padding-left: 87px;
+        border-radius: 12px;
+        border: 0.4px solid rgba(0, 90, 226, 1);
+    }
 
-.pricing {
-    text-align: center;
-    background: #fff;
-}
-.pricings{
-    padding-inline-start: 100px;
-}
-
-.pricing-cards {
-    display: flex;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1088px;
-    max-height: 627px;
-    margin-top: 218px;
-    padding-inline: 176px;
-    border-radius: 12px;
-    margin: 55px auto 35px;
-    align-items: baseline;
-}
-.section-heading h2{
-    padding-bottom: 68px;
-}
-.section-heading p{
-    font-size: 16px;
-    line-height: 24px;
-    padding-left: 400px;
-}
-
-.price-card {
-    border: 1px solid #dce5ef;
-    padding: 45px 30px;
-    text-align: left;
-    background: white;
-    border-radius: 5px;
-}
-
-.price-card h3 {
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 500;
-    
-}
-
-.price {
-    padding-top: 34px;
-    font-size: 27px;
-    font-weight: 700;
-    margin: 12px 0 5px;
-}
-
-.price-card .description {
-    font-size: 11px;
-    color: #777;
-    margin-bottom: 25px;
-}
-
-.price-card ul {
-    list-style: none;
-}
-
-.price-card li {
-    font-size: 14px;
-    line-height: 24px;
-    margin: 16px 0;
-}
-
-.price-card li::before {
+    .price-card-professional{
+        width: 410px;
+        height: 627px;
+        border-radius: 12px;
+        color: #ffffff;
+        background-color: rgba(30, 52, 72, 1);
+    }
+     
+    .price-card li::before {
     content: url(check-circle.svg);
-    color: var(--blue);
     margin-right: 9px;
-    font-weight: bold;
-}
 
-.price-card.professional {
-    background: var(--navy);
-    color: white;
-    padding: 65px 30px;
-    border-radius: 5px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.12);
-}
+    }
 
-.professional .description {
-    color: #d3dce4;
-}
+    .price-card ul{
+        list-style: none;
+        padding-inline-start: 0px;
+        height: 216px;
+    }
 
-.professional li::before {
-    color: #8ec2ff;
-}
+    .price-card li{
+        font-size: 14px;
+        line-height: 24px;
+        padding-top: 24px;
+        
+    }
+    
+    .price-card h3{
+        margin-block-start: 24px;
+     font-weight: 400;
+     font-size: 24px;
+     line-height: 32px;
+     letter-spacing: 0%;
+    }
 
-.btn .btn-outline{
+    .price{
+        margin-block-start: 34px;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0%;
+
+    }
+
+    .description{
+        margin-block-start: 8px;
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 400;
+    }
+
+    .price-card-professional h3{
+        margin-left: 65px;
+        margin-block-start: 95px;
+        font-weight: 400;
+     font-size: 24px;
+     line-height: 32px;
+    }
+
+    .price-1{
+        margin-block-start: 24px;
+        margin-left: 65px;
+         font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0%;
+    }
+
+    .description-1{
+        margin-block-start: 8px;
+        margin-left: 65px;
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 400;
+
+    }
+
+    .price-card-professional ul{
+        height: 216px;
+        margin-left: 22px;
+        list-style: none;
+    }
+    .price-card-professional li::before {
+    content: url(check-circle.svg);
+
+    }
+
+    .price-card-professional li{
+        padding-top: 24px;
+    }
+
+    .pricing-buttons{
+        display: flex;
+        width: 412px;
+        height: 48px;
+        margin-block-start: 68px;
+        margin-left: 514px;
+        gap: 12px;
+    }
+
+    .btn-1{
+    padding-top: 12px;
+    padding-left: 44px;
     width: 200px;
-    height: 48px;
+    border-radius: 100px;
+    color: #ffffff;
+    background-color:  rgba(0, 101, 254, 1);
     gap: 10px;
-}
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 101, 254, 1);
+    }
 
+   .btn-2{
+    width: 200px;
+    border-radius: 100px;
+    padding-top: 12px;
+    padding-left: 24px;
+    color: rgba(0, 101, 254, 1);
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 101, 254, 1);
+   }
 
+   /* Shortener Section*/
 
-
-.pricing-buttons {
-    display: flex;
-    width: 412px;
-    margin-top: 68px;
-    margin-left: 400px;
-    max-height: 48px;
-    justify-content: center;
-    gap: 12px;
-}
-
-/* =====================================
-   8. URL SHORTENER SECTION
-===================================== */
-
-.shortener {
+   .shortener{
+    margin-block-start: 112px;
+    height: 523px;
     background-image: url(Desktop\ -\ 11.svg.svg);
     background-repeat: no-repeat;
     background-position: center;
+    padding: 83.5px 10px;
 
-    padding: 65px 20px;
-}
+   }
 
-.shortener-box {
-    max-width: 476px;
-    height: 355px;
+
+  .shortener-box{
     background: white;
-    margin: auto;
-    padding: 35px;
-    border-radius: 8px;
-}
-h5{
-    font-size: 14px;
-    padding-block-start: 22px;
-    padding-inline-start: 10px;
-    color: #4991FF;
-}
+    margin-left: 482px;
+    margin-bottom: 83.5px;
+    border-radius: 12px;
+    width: 476px;
+    height: 355px;
+  }
 
-.shortener-box input,
-.shortener-box select {
-    color: #3284FF;
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #b9cce0;
-    border-radius: 6px;
-    margin-bottom: 14px;
-    outline: none;
-    font-family: inherit;
+  #shortenerForm{
+    height: 355px;
+
+  }
+
+  #longUrl{
+    width: 392px;
+    height: 55px;
     font-size: 12px;
-}
+    line-height: 18px;
+    padding-inline-start: 24px;
+    margin-block-start: 42px;
+    margin-left: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 101, 254, 1);
 
-.shortener-box input:focus,
-.shortener-box select:focus {
-    border-color: var(--blue);
-    color: #3284FF;
-}
+  }
+  ::placeholder{
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 400;
+    color: rgba(0, 101, 254, 1);
+  }
 
-.input-row {
-    color: #3284FF;
+  .input-row{
+    width: 392px;
+    height: 48px;
     display: flex;
     gap: 12px;
-}
+    margin-left: 42px;
+    margin-block-start: 24px;
+  }
 
-.input-row > * {
-    width: 50%;
-    color: #3284FF;
-}
+  #domain{
+    width: 202px;
+    height: 48px;
+    color: rgba(0, 101, 254, 1);
+    padding-inline-start: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 101, 254, 1);
+  }
 
-.shortener-box button {
-    width: 100%
+  #customAlias{
+    width: 178px;
+    height: 48px;
+    padding-inline-start: 18px;
+    border-radius: 12px;
+    border: 1px solid  rgba(0, 101, 254, 1); 
+  }
 
+  .input-row ::placeholder{
+    color: rgba(0, 101, 254, 1);
+  }
 
+  .trim-button{
+    margin-block-start: 24px;
+    margin-left: 42px;
+    border: none;
+  }
 
-}
+  .shortener h5{
+    width: 373px;
+    margin-left: 42px;
+   margin-block-start: 12px;
+   font-size: 14px;
+   line-height: 20px;
+   font-weight: 400;
+  }
 
+  /* FAQ Section */
 
+  #faq{
+    margin-block-start: 43px;
+    margin-left: 324px;
+  }
 
-.shortener-box small {
+  .container-3 h2{
+    width: 112.1px;
+    height: 48px;
+    margin-left: 340px;
+    font-size: 40px;
+    line-height: 32px;
+  }
 
-    display: block;
-    font-size: 10px;
-    color: #777;
-    line-height: 1.8;
-    margin-top: 15px;
-}
-.trim-btn {
-  /* Set a smaller max-width (e.g., 200px instead of 392px) */
-  width: 100%;
-  max-width: 392px; 
-  
-  /* Reduce padding to shrink vertical/horizontal content space */
-  padding: 8px 16px; 
-  
-  /* Optional: adjust text size */
-  font-size: 14px; 
-  
-  /* Maintain styling */
-  background-color: #005AE2;
-  color: white;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-}
+  .faq-list{
+    width: 792px;
+    height: 843px;
+    margin-block-start: 64px;
+  }
 
-#result {
-    display: none;
-    margin-top: 20px;
-    padding: 12px;
-    background: #eef5ff;
-    border-radius: 5px;
-    font-size: 12px;
-    overflow-wrap: anywhere;
-}
-
-#result a {
-    color: var(--blue);
-    font-weight: 600;
-}
-
-/* =====================================
-   9. FAQ SECTION
-===================================== */
 
 .faq-list details {
     border-bottom: 1px solid #e5e5e5;
@@ -668,7 +618,7 @@ h5{
     font-size: 20px;
     line-height: 32px;
     color: #141414;
-    font-weight: 500;
+    font-weight: 400;
     list-style: none;
     position: relative;
     padding-right: 30px;
@@ -694,127 +644,39 @@ h5{
 }
 
 .faq-list details p {
+    width: 766px;
     font-size: 16px;
     line-height: 32px;
     color: #141414;
     padding-top: 15px;
-    max-width: 750px;
+
 }
 
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    padding-top: 33px;
-}
-
-.jogg {
-    width: 100%;
-    height: 299px;
-    background: linear-gradient(
-        110deg,
-        #1c3448,
-        #1d3449,
-        #192e42
-    );
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Background decorative shapes */
-
-
-/* Left abstract wave */
 .jogg{
-    background-image: url(Desktop\ -\ 11.svg.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    margin-block-start: 155px;
 }
 
-
-
-
-/* Hero content */
-.jogg-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: #ffffff;
-}
-
-
-.jogg-content {
-    
-    font-size: 29px;
-    font-weight: 800;
-    margin-bottom: 29px;
-    letter-spacing: -0.7px;
-}
-
-.jogg-content button {
-    background: #0860ed;
-    color: #ffffff;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 37px;
-    min-width: 134px;
-    height: 33px;
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.jogg-content button:hover {
-    background: #004bc4;
-}
-
-/* Footer text */
-.footer-text {
-    position: absolute;
-    bottom: 8px;
-    left: 2px;
-    color: #8594a1;
-    font-size: 10px;
-    z-index: 2;
-}
-
-
-
-
-
-/* =====================================
-   10. FOOTER
-===================================== */
-
+/* Footer Section */
 footer {
     background: url(Group\ 3.svg);
     background-repeat: repeat-y;
-
-    padding: 75px 0 25px;
+    margin-block-start: 95px;
+    height: 506px;
 }
 
 .footer-grid {
-    background: url(Vector\ \(1\).svg);
-    background-repeat: no-repeat;
-    background-position: right;
     display: grid;
-    grid-template-columns: 1.2fr repeat(4, 1fr);
+    grid-template-columns: 2fr repeat(4, 1fr);
     gap: 35px;
 }
 
 .footer-brand .logo {
     display: inline-block;
     margin-bottom: 20px;
+}
+
+.footer-brand{
+    margin-left: 203px;
 }
 
 .social-links {
@@ -827,6 +689,9 @@ footer {
     color: var(--blue);
 }
 
+.footer-column{
+    margin-right: 60px;
+}
 .footer-column h4 {
     color: #112232;
     font-size: 16px;
@@ -837,7 +702,7 @@ footer {
 
     display: block;
     font-size: 16px;
-    color: #112232
+    color: #112232;
     margin-bottom: 10px;
 }
 
@@ -845,172 +710,739 @@ footer {
     color: var(--blue);
 }
 
-.footer-bottom {
+.footer-bottom{
+    background-image: url(Group\ 2\ \(1\).svg);
+    background-repeat:no-repeat;
+    width: 296px;
+    height: 24px;
+    margin-block-start: 23px;
+    margin-left: 1029px;
+    
+}
 
-    background-position: right;
-    border-top: 1px solid #eee;
-    margin-top: 55px;
-    padding-right 12px;
-    font-size: 14px;
-    padding-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    font-size: 10px;
-    color: #112232
+
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+/* Global responsive fixes */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    
+}
+
+/* Make common containers responsive */
+.container-navbar,
+.container,
+.container-1,
+.container-2,
+.features,
+.pricing-cards,
+.faq-list {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* =====================================
-   11. TABLET RESPONSIVENESS
+   TABLET RESPONSIVENESS
 ===================================== */
 
-@media(max-width: 768px) {
+@media screen and (max-width: 1024px) {
 
-    .container {
-        width: 90%;
-    }
-
-    .navbar {
-        height: 70px;
-    }
-
-    /* Navigation */
-
-    .menu-toggle {
-        display: block;
+    /* Navbar */
+    .container-navbar {
+        padding: 15px 25px;
+        gap: 20px;
+        flex-wrap: wrap;
     }
 
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 25px;
-        flex-direction: column;
-        gap: 22px;
-        box-shadow: 0 10px 15px rgba(0,0,0,.08);
-    }
-
-    .nav-links.active {
-        display: flex;
+        width: auto;
+        gap: 20px;
+        font-size: 15px;
     }
 
     .nav-actions {
-        gap: 10px;
-    }
-
-    .nav-actions .login {
-        display: none;
-    }
-
-    /* Hero */
-
-    .hero {
-        padding: 75px 0 55px;
-        min-height: auto;
-    }
-
-    .hero h1 {
-        line-height: 1.4;
-    }
-
-    .chain {
-        font-size: 25px;
-    }
-
-    section {
-        padding: 60px 0;
-    }
-
-    /* Statistics */
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-    }
-
-    .stats-heading {
-        grid-column: span 2;
-    }
-
-    /* Features */
-
-    .features {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .feature-grid {
-        gap: 25px 15px;
-    }
-
-    /* Pricing */
-
-    .pricing-cards {
-        grid-template-columns: 1fr;
-        max-width: 400px;
+        width: auto;
         gap: 15px;
     }
 
-    .price-card.professional {
-        padding: 45px 30px;
+    /* Hero */
+    .hero {
+        width: 100%;
+        max-width: 900px;
+        margin: 80px auto 0;
+        padding: 0 25px;
+        text-align: center;
     }
 
-    .pricing-buttons {
-        flex-direction: column;
+    .contain h1 {
+        width: 100%;
+        max-height: none;
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.4;
+    }
+
+    .container p {
+        width: 100%;
+        height: auto;
+        margin: 20px auto;
+        padding: 0 15px;
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        margin: 25px auto 0;
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
 
-    /* FAQ */
+    .img {
+        width: 100%;
+        height: auto;
+        margin: 50px auto 0;
+        padding: 0 20px;
+    }
 
-    .faq-list summary {
-        font-size: 16px;
-        line-height: 1.7;
+    .img img {
+        width: 100%;
+        max-width: 833px;
+        margin: auto;
+    }
+
+    /* Statistics */
+    .pricings img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .img-1,
+    .stop {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Features */
+    .features {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 30px;
+        margin: 100px auto 0;
+        padding: 0 30px;
+    }
+
+    .feature-intro h2 {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        font-size: 32px;
+        line-height: 1.3;
+    }
+
+    .feature-intro p {
+        margin-left: 0;
+    }
+
+    .feature-grid {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto;
+        gap: 35px 20px;
+    }
+
+    .feature-card h3 {
+        font-size: 25px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+    }
+
+    /* Pricing */
+    .container-1 {
+        margin-top: 120px;
+    }
+
+    .section-headings {
+        width: 100%;
+        height: auto;
+        margin: auto;
+        text-align: center;
+    }
+
+    .section-headings p {
+        padding: 0 15px;
+    }
+
+    .pricing-cards {
+        height: auto;
+        margin: 60px auto 0;
+        gap: 15px;
+    }
+
+    .price-card,
+    .price-card-professional {
+        width: 33.33%;
+        height: auto;
+        min-height: 455px;
+        padding: 25px;
+    }
+
+    .price-card {
+        padding-left: 25px;
+    }
+
+    .price-card-professional h3,
+    .price-1,
+    .description-1 {
+        margin-left: 0;
+    }
+
+    .price-card-professional h3 {
+        margin-top: 30px;
+    }
+
+    .price-card-professional ul {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .price-card li {
+        font-size: 13px;
+    }
+
+    .pricing-buttons {
+        margin: 50px auto 0;
+        justify-content: center;
+    }
+
+    /* URL Shortener */
+    .shortener {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .shortener-box {
+        margin: auto;
+        max-width: 476px;
+        width: 100%;
+    }
+
+    /* FAQ */
+    #faq {
+        margin: 60px auto 0;
+        padding: 0 25px;
+    }
+
+    .container-3 h2 {
+        margin: auto;
+        text-align: center;
+    }
+
+    .faq-list {
+        height: auto;
+        margin: 50px auto 0;
+    }
+
+    .faq-list details,
+    .faq-list summary,
+    .faq-list details p {
+        width: 100%;
     }
 
     /* Footer */
+    footer {
+        height: auto;
+        padding: 50px 25px 30px;
+    }
 
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 35px;
+    }
+
+    .footer-brand {
+        margin-left: 0;
+    }
+
+    .footer-column {
+        margin-right: 0;
+    }
+
+    .footer-bottom {
+        margin: 30px 0 0;
+        text-align: right;
+    }
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVENESS
+===================================== */
+
+@media screen and (max-width: 767px) {
+
+    /* Navbar */
+    .container-navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .logo img {
+        width: 135px;
+    }
+
+    .nav-links {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px 20px;
+        font-size: 14px;
+    }
+
+    .nav-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+        margin-top: 65px;
+        padding: 0 18px;
+    }
+
+    .contain h1 {
+        font-size: clamp(27px, 7vw, 38px);
+        line-height: 1.4;
+    }
+
+    .contain h1 br,
+    .container p br,
+    .section-descriptions br,
+    .section-headings p br,
+    .feature-card p br,
+    .shortener h5 br {
+        display: none;
+    }
+
+    .contain img {
+        width: 130px;
+    }
+
+    .container p {
+        font-size: 15px;
+        line-height: 25px;
+        padding: 0;
+    }
+
+    .hero-buttons {
+        width: 100%;
+        height: auto;
+        gap: 25px;
+    }
+
+    .img {
+        margin-top: 40px;
+        padding: 0;
+    }
+
+    /* Statistics */
+    .pricings {
+        width: 100%;
+        padding: 0 15px;
+        margin-top: 50px;
+    }
+
+    /* Features */
+    .features {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-top: 80px;
+        padding: 0 22px;
+        gap: 40px;
+    }
+
+    .feature-intro {
+        width: 100%;
+        height: auto;
+    }
+
+    .feature-intro h2 {
+        font-size: 30px;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    .feature-intro p {
+        font-size: 15px;
+        line-height: 25px;
+        margin: 15px 0 0;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 35px;
+        width: 100%;
+        height: auto;
+    }
+
+    .feature-card {
+        width: 100%;
+    }
+
+    .feature-card h3 {
+        font-size: 25px;
+        line-height: 1.4;
+        margin-top: 20px;
+    }
+
+    .feature-card p {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    /* Pricing */
+    .container-1 {
+        margin-top: 90px;
+    }
+
+    .section-headings {
+        padding: 0 20px;
+    }
+
+    .section-headings h2 {
+        font-size: 30px;
+        line-height: 1.4;
+    }
+
+    .section-headings p {
+        font-size: 15px;
+        line-height: 25px;
+        margin-top: 15px;
+    }
+
+    .pricing-cards {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 0 25px;
+        margin-top: 40px;
+        gap: 25px;
+    }
+
+    .price-card,
+    .price-card-professional {
+        width: 100%;
+        max-width: 400px;
+        min-height: 455px;
+        height: auto;
+        padding: 30px;
+    }
+
+    .price-card h3 {
+        margin-top: 10px;
+    }
+
+    .price-card-professional h3 {
+        margin-top: 10px;
+    }
+
+    .price-card-professional ul {
+        margin-top: 15px;
+    }
+
+    .price-card li,
+    .price-card-professional li {
+        padding-top: 18px;
+        font-size: 14px;
+    }
+
+    .price {
+        font-size: 35px;
+    }
+
+    .price-1 {
+        font-size: 35px;
+    }
+
+    .description,
+    .description-1 {
+        font-size: 17px;
+        line-height: 26px;
+    }
+
+    .pricing-buttons {
+        width: 100%;
+        height: auto;
+        padding: 0 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 40px;
+    }
+
+    .btn-1,
+    .btn-2 {
+        width: 100%;
+        max-width: 300px;
+        height: 48px;
+        padding: 12px;
+        text-align: center;
+    }
+
+    /* Shortener */
+    .shortener {
+        width: 100%;
+        height: auto;
+        min-height: 480px;
+        margin-top: 80px;
+        padding: 50px 18px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .shortener-box {
+        width: 100%;
+        max-width: 476px;
+        height: auto;
+        min-height: 355px;
+        padding: 20px;
+        margin: auto;
+    }
+
+    #shortenerForm {
+        width: 100%;
+        height: auto;
+    }
+
+    #longUrl {
+        width: 100%;
+        height: 52px;
+        margin: 15px 0 0;
+        padding: 0 15px;
+    }
+
+    .input-row {
+        width: 100%;
+        height: auto;
+        margin: 18px 0 0;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #domain,
+    #customAlias {
+        width: 100%;
+        height: 48px;
+        padding: 0 15px;
+    }
+
+    .trim-button {
+        width: 100%;
+        margin: 20px 0 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    .trim-button img {
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .shortener h5 {
+        width: 100%;
+        margin: 15px 0 0;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    /* FAQ */
+    #faq {
+        width: 100%;
+        margin-top: 60px;
+        padding: 0 20px;
+    }
+
+    .container-3 h2 {
+        font-size: 32px;
+    }
+
+    .faq-list {
+        width: 100%;
+        height: auto;
+        margin-top: 35px;
+        padding: 0;
+    }
+
+    .faq-list details {
+        width: 100%;
+        padding: 18px 0;
+    }
+
+    .faq-list summary {
+        width: 100%;
+        font-size: 16px;
+        line-height: 25px;
+        padding-right: 30px;
+    }
+
+    .faq-list details p {
+        width: 100%;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    /* Bottom banner */
+    .jogg {
+        width: 100%;
+        margin-top: 80px;
+    }
+
+    .jogg img {
+        width: 100%;
+    }
+
+    /* Footer */
+    footer {
+        width: 100%;
+        height: auto;
+        margin-top: 60px;
+        padding: 45px 22px 25px;
+        background-size: cover;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 35px 20px;
     }
 
     .footer-brand {
-        grid-column: span 2;
+        grid-column: 1 / -1;
+        margin: 0;
     }
 
-    .footer-bottom {
-        justify-content: center;
-        flex-wrap: wrap;
+    .footer-column {
+        margin: 0;
     }
-}
+
+    .footer-column h4 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .footer-column a {
+        font-size: 13px;
+        line-height: 22px;
+        margin-bottom: 8px;
+    }
+
+    .social-links {
+        gap: 15px;
+    }
+    .footer-bottom {
+        margin: 35px 0 0;
+        font-size: 12px;
+        text-align: center;
+    }
+
+
+
 
 /* =====================================
-   12. SMALL MOBILE RESPONSIVENESS
+   SMALL MOBILE DEVICES
 ===================================== */
 
-@media(max-width: 380px) {
+@media screen and (max-width: 480px) {
 
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
+    .container-navbar {
+        padding: 15px;
     }
 
-    .shortener-box {
-        padding: 22px;
+    .nav-links {
+        gap: 12px;
+        font-size: 12px;
     }
 
-    .input-row {
-        gap: 7px;
+    .nav-actions {
+        gap: 20px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+
+    .contain h1 {
+        font-size: 27px;
+        line-height: 1.4;
     }
 
     .hero-buttons {
         gap: 15px;
     }
 
-    .section-heading {
-        font-size: 25px;
+    .features {
+        padding: 0 18px;
     }
+
+    .feature-intro h2 {
+        font-size: 27px;
+    }
+
+    .section-headings h2 {
+        font-size: 27px;
+    }
+
+    .price-card,
+    .price-card-professional {
+        padding: 25px 20px;
+    }
+
+    .faq-list summary {
+        font-size: 15px;
+    }
+
+    .footer-grid {
+        gap: 30px 15px;
+    }
+
+    .footer-column a {
+        font-size: 12px;
+    }
+
+
+
+}
+
+
 
 }
